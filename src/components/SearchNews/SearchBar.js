@@ -3,20 +3,21 @@ import { ImSearch } from "react-icons/im";
 import { newsActions } from "../../store/news-slice";
 import { fetchNewsData } from "../../store/news-actions";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const SearchBar = (props) => {
-  const [enteredTerm, setEnteredTerm] = useState("");
+  const initialTerm = useSelector((state) => state.news.term);
+  const [enteredTerm, setEnteredTerm] = useState(initialTerm);
   const dispatch = useDispatch();
 
   const { onSort } = props;
   useEffect(() => {
     const url = `https://newsapi.org/v2/everything?q=${enteredTerm}&apiKey=f09c2bf0b57c456f84b70b851fe67ceb`;
 
-    if (enteredTerm === "") {
-      /*dispatch(newsActions.addSearchedNews(enteredTerm));*/
-      return;
+    if (enteredTerm.length > 1) {
+      dispatch(newsActions.storeTerm(enteredTerm));
     }
-
+    dispatch(newsActions.storeTerm(enteredTerm));
     /*debouncing, fetching the searched News and rewriting the state */
     const timeout = setTimeout(() => {
       console.log("Running function for fetching");

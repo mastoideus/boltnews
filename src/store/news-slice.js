@@ -5,13 +5,20 @@ const newsSlice = createSlice({
   initialState: {
     news: [],
     searchedNews: [],
+    term: "",
   },
   reducers: {
     addFetchedNews(state, action) {
       state.news = action.payload;
     },
     addSearchedNews(state, action) {
+      if (action.payload === "") {
+        state.searchedNews = [];
+      }
       state.searchedNews = action.payload;
+    },
+    storeTerm(state, action) {
+      state.term = action.payload;
     },
   },
 });

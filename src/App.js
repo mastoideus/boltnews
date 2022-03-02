@@ -53,7 +53,7 @@ function App() {
         <Route path="/news" exact>
           <News onScrollCircle={onScrollCircle} />
         </Route>
-        <Route path="/news/:slug">
+        <Route path="/news/:newsId">
           <Article />
         </Route>
         <Route path="/search-news">

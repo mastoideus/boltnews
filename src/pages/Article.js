@@ -17,7 +17,7 @@ export const Article = () => {
 
   /*extracting dynamic article id from path*/
   const params = useParams();
-  const articleSlug = decodeURIComponent(params.slug);
+  const articleSlug = decodeURIComponent(params.newsId);
 
   const concatedData = searchedNews.concat(news);
 
