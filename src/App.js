@@ -23,7 +23,7 @@ function App() {
   /*fetching the top-headings and storing in redux*/
   useEffect(() => {
     dispatch(fetchNewsData(url, newsActions.addFetchedNews));
-  }, []);
+  }, [dispatch]);
 
   /*handling the scroll states on different scroll value*/
   useEffect(() => {
