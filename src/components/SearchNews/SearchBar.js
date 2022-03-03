@@ -4,6 +4,7 @@ import { newsActions } from "../../store/news-slice";
 import { fetchNewsData } from "../../store/news-actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { baseUrl } from "../../baseUrl";
 
 const SearchBar = (props) => {
   const initialTerm = useSelector((state) => state.news.term);
@@ -12,12 +13,15 @@ const SearchBar = (props) => {
 
   const { onSort } = props;
   useEffect(() => {
-    const url = `https://newsapi.org/v2/everything?q=${enteredTerm}&apiKey=f09c2bf0b57c456f84b70b851fe67ceb`;
+    const url = `${baseUrl}/everything?q=${enteredTerm}&apiKey=${process.env.REACT_APP_API_KEY}`;
 
-    if (enteredTerm.length > 1) {
+    if (enteredTerm === "") {
+      dispatch(newsActions.addSearchedNews(enteredTerm));
+      return;
+    } else if (enteredTerm.length > 0) {
       dispatch(newsActions.storeTerm(enteredTerm));
     }
-    dispatch(newsActions.storeTerm(enteredTerm));
+
     /*debouncing, fetching the searched News and rewriting the state */
     const timeout = setTimeout(() => {
       console.log("Running function for fetching");

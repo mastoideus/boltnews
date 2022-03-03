@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
+
 import { News } from "./pages/News";
 import { Article } from "./pages/Article";
 import NotFound from "./pages/NotFound";
@@ -8,6 +9,9 @@ import Layout from "./components/Layout/Layout";
 import SearchNews from "./pages/SearchNews";
 import { fetchNewsData } from "./store/news-actions";
 import { newsActions } from "./store/news-slice";
+import { baseUrl } from "./baseUrl";
+
+const url = `${baseUrl}/top-headlines?country=us&apiKey=${process.env.REACT_APP_API_KEY}`;
 
 function App() {
   const dispatch = useDispatch();
@@ -16,13 +20,10 @@ function App() {
   const [onScrollNav, setOnScrollNav] = useState(false);
   const [onScrollCircle, setOnScrollCricle] = useState(false);
 
-  const url =
-    "https://newsapi.org/v2/top-headlines?country=us&apiKey=f09c2bf0b57c456f84b70b851fe67ceb";
-
   /*fetching the top-headings and storing in redux*/
   useEffect(() => {
     dispatch(fetchNewsData(url, newsActions.addFetchedNews));
-  }, [dispatch]);
+  }, []);
 
   /*handling the scroll states on different scroll value*/
   useEffect(() => {
@@ -53,7 +54,7 @@ function App() {
         <Route path="/news" exact>
           <News onScrollCircle={onScrollCircle} />
         </Route>
-        <Route path="/news/:newsId">
+        <Route path="/news/:newsId" exact>
           <Article />
         </Route>
         <Route path="/search-news">

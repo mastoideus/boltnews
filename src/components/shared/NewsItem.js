@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const NewsItem = ({ description, title, urlToImage, searched }) => {
   return (
-    <div className="w-[100%] md:w-[48%] xl:w-[30%] h-[30rem] shadow-md bg-white p-4 relative font-main">
+    <div className="w-[100%] md:w-[48%] xl:w-[30%] h-[30rem] last:mr-auto last:ml-[4%] md:last:ml-[5%]   shadow-md bg-white p-4 relative font-main">
       <div className="w-[100%] h-[50%] md:h-[40%] mb-4">
         <img
           src={urlToImage}

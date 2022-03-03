@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import NewsItem from "../NewsPage/NewsItem";
+import NewsItem from "./NewsItem";
 
 const NewsList = ({ news, searched }) => {
   return (
@@ -17,7 +17,7 @@ const NewsList = ({ news, searched }) => {
         delay: 0.7,
         duration: 1,
       }}
-      className="flex flex-col md:flex-row md:flex-wrap  md:justify-between  gap-y-6"
+      className="flex flex-col md:flex-row md:flex-wrap  md:justify-between   gap-y-6"
     >
       {news.map((article, i) => {
         return (

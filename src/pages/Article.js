@@ -11,21 +11,15 @@ export const Article = () => {
   const news = useSelector((state) => state.news.news);
   const searchedNews = useSelector((state) => state.news.searchedNews);
 
-  console.log(searchedNews);
-
-  const searched = location.state;
-
   /*extracting dynamic article id from path*/
   const params = useParams();
   const articleSlug = decodeURIComponent(params.newsId);
 
-  const concatedData = searchedNews.concat(news);
-
   /* searching for the clicked article depending on the starting path */
-  const clickedArticle = concatedData.find(
+  const searched = location.state;
+  const clickedArticle = (searched === "searched" ? searchedNews : news).find(
     (article) => article.title === articleSlug
   );
-  console.log(clickedArticle);
 
   return <ArticleDetail article={clickedArticle} />;
 };

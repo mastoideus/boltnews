@@ -18,32 +18,28 @@ const SearchNews = ({ onScrollCircle }) => {
     [term]
   );
 
-  let content;
-
-  if (term === "") {
-    content = (
-      <motion.div
-        initial={{
-          y: -100,
-          opacity: 0,
-        }}
-        animate={{
-          y: 0,
-          opacity: 1,
-        }}
-        transition={{
-          duration: 1,
-          delay: 2,
-        }}
-        className="flex justify-center items-center min-h-[20rem] "
-      >
-        <h1 className="text-xl md:text-2xl lg:text-4xl font-header ">
-          Search for Articles by <span className=" text-red-700">#</span>
-          term
-        </h1>
-      </motion.div>
-    );
-  }
+  let content = (
+    <motion.div
+      initial={{
+        y: -100,
+        opacity: 0,
+      }}
+      animate={{
+        y: 0,
+        opacity: 1,
+      }}
+      transition={{
+        duration: 1,
+        delay: 2,
+      }}
+      className="flex justify-center items-center min-h-[20rem] "
+    >
+      <h1 className="text-xl md:text-2xl lg:text-4xl font-header ">
+        Search for Articles by <span className=" text-red-700">#</span>
+        term
+      </h1>
+    </motion.div>
+  );
 
   if (searchedNews.length > 0 && term !== "") {
     content = (

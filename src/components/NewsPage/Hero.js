@@ -31,7 +31,7 @@ const Hero = ({ onScrollNav, focusText, letterSpace, textFont, children }) => {
               className="relative bg-gray-200 w-[5%] h-[5%]  transition-all duration-[1.2s] rounded-full "
             ></div>
           </div>
-          <p className={`${textFont && textFont}`}>
+          <h1 className={`${textFont && textFont}`}>
             {focusText.split("").map((char, i) => {
               return (
                 <span
@@ -43,7 +43,7 @@ const Hero = ({ onScrollNav, focusText, letterSpace, textFont, children }) => {
                 </span>
               );
             })}
-          </p>
+          </h1>
         </div>
       </motion.div>
       {children}

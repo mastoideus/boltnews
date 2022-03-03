@@ -6,6 +6,7 @@ module.exports = {
         header: ['"Fjalla One"', "serif"],
         main: ['"Oswald"'],
         circle: ['"Wallpoet"'],
+        firstLetter: ["'UnifrakturMaguntia'"],
       },
     },
   },

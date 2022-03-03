@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { newsActions } from "../../store/news-slice";
 import { fetchNewsData } from "../../store/news-actions";
+import { baseUrl } from "../../baseUrl";
 
 const SortNews = ({ term }) => {
   const [sortType, setSortType] = useState("");
@@ -10,7 +11,7 @@ const SortNews = ({ term }) => {
   const submitSortHandler = (e) => {
     e.preventDefault();
     console.log(sortType);
-    const url = `https://newsapi.org/v2/everything?q=${term}&sortBy=${sortType}&apiKey=f09c2bf0b57c456f84b70b851fe67ceb`;
+    const url = `${baseUrl}/everything?q=${term}&sortBy=${sortType}&apiKey=${process.env.REACT_APP_API_KEY}`;
     dispatch(fetchNewsData(url, newsActions.addSearchedNews));
   };
 

@@ -26,6 +26,8 @@ const ArticleDetail = ({ article }) => {
         content={article.content}
         source={article.source.name}
         description={article.description}
+        publishDate={article.publishedAt}
+        url={article.url}
       />
     </div>
   );
