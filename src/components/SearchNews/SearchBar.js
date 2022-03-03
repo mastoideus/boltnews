@@ -15,20 +15,19 @@ const SearchBar = (props) => {
   useEffect(() => {
     const url = `${baseUrl}/everything?q=${enteredTerm}&apiKey=${process.env.REACT_APP_API_KEY}`;
 
+    /*store the search term in redux */
+    dispatch(newsActions.storeTerm(enteredTerm));
+
+    /*set the searched News state to initial value */
     if (enteredTerm === "") {
       dispatch(newsActions.addSearchedNews(enteredTerm));
-      dispatch(newsActions.storeTerm(enteredTerm));
       return;
-    } else if (enteredTerm.length > 0) {
-      dispatch(newsActions.storeTerm(enteredTerm));
     }
 
     /*debouncing, fetching the searched News and rewriting the state */
     const timeout = setTimeout(() => {
-      console.log("Running function for fetching");
       dispatch(fetchNewsData(url, newsActions.addSearchedNews));
     }, 700);
-    console.log("Running searchfetch function ");
 
     /*lifting the state up to SearchNews for url sorting purposes */
     onSort(enteredTerm);
