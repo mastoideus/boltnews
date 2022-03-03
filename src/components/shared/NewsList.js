@@ -21,11 +21,7 @@ const NewsList = ({ news, searched }) => {
     >
       {news.map((article, i) => {
         return (
-          <NewsItem
-            key={article.publishedAt}
-            {...article}
-            searched={searched}
-          />
+          <NewsItem key={article.title} {...article} searched={searched} />
         );
       })}
     </motion.div>

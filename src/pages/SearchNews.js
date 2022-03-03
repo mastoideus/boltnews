@@ -11,12 +11,9 @@ const SearchNews = ({ onScrollCircle }) => {
   const searchedNews = useSelector((state) => state.news.searchedNews);
   const searched = "searched";
 
-  const onSortHandler = useCallback(
-    (term) => {
-      setTerm(term);
-    },
-    [term]
-  );
+  const onSortHandler = useCallback((term) => {
+    setTerm(term);
+  }, []);
 
   let content = (
     <motion.div

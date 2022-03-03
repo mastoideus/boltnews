@@ -14,6 +14,7 @@ const newsSlice = createSlice({
     addSearchedNews(state, action) {
       if (action.payload === "") {
         state.searchedNews = [];
+        return;
       }
       state.searchedNews = action.payload;
     },

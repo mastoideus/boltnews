@@ -17,6 +17,7 @@ const SearchBar = (props) => {
 
     if (enteredTerm === "") {
       dispatch(newsActions.addSearchedNews(enteredTerm));
+      dispatch(newsActions.storeTerm(enteredTerm));
       return;
     } else if (enteredTerm.length > 0) {
       dispatch(newsActions.storeTerm(enteredTerm));
